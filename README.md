@@ -27,8 +27,7 @@ This app will consist of a single screen where the name will be in the top-cente
 - Vanilla Javascript and `jquery` for overall structure
 - `Howler.js` for sounds
 - Web Audio API to get audio information
-- `Anime.js` for animation
-- `D3.js` or `Easel.js` for DOM manipulation and rendering, with the possibility of `three.js` for 3D animations
+- `D3.js` for animations 
 
 In addition to the webpack entry file, there will be multiple scripts involved in this project:
 
