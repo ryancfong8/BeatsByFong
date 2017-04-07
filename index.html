@@ -1,10 +1,34 @@
 <!DOCTYPE html>
 <html>
   <head>
+
     <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Beats By Fong</title>
+
+
   </head>
   <body>
+
     <h1>Welcome to Beats By Fong</h1>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+      <!-- <audio id="audioElement" src ="./audio/audien1.mp3"></audio> -->
+        <h2>Sound Information</h2>
+        <div id="length">Duration:</div>
+        <div id="source">Source:</div>
+        <div id="status" style="color:red;">Status: Loading</div>
+        <hr>
+        <h2>Control Buttons</h2>
+        <button id="play">Play</button>
+        <button id="pause">Pause</button>
+        <button id="restart">Restart</button>
+        <hr>
+        <h2>Playing Information</h2>
+        <div id="currentTime">0</div>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script src="audio-visualizer.js"></script>
   </body>
+
+
 </html>
