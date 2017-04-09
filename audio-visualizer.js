@@ -33,7 +33,7 @@ function getData() {
   source = audioCtx.createBufferSource();
   let request = new XMLHttpRequest();
 
-  request.open('GET', './audio/audien1.mp3', true);
+  request.open('GET', './audio/slow.mp3', true);
 
   request.responseType = 'arraybuffer';
 
@@ -78,6 +78,13 @@ let frequencyData = new Uint8Array(200);
 
   let svg = createSvg('body', svgHeight, svgWidth);
 
+  // svg.selectAll('circle')
+  //    .data(frequencyData)
+  //    .enter()
+  //    .append('circle')
+  //    .attr("cx", 700)
+  //    .attr("cy", 400)
+
   svg.selectAll('rect')
      .data(frequencyData)
      .enter()
@@ -101,9 +108,22 @@ let frequencyData = new Uint8Array(200);
         return d;
       })
       .attr('fill', function(d) {
-        return 'rgb(0, 0, ' + (d) + ')';
+        return 'rgb( 0, 0, ' + (d) + ')';
       });
   }
+
+  //   svg.selectAll('circle')
+  //     .data(frequencyData)
+  //     .attr('y', function(d) {
+  //       return d;
+  //     })
+  //     .attr('r', function(d) {
+  //       return d;
+  //     })
+  //     .attr('fill', function(d) {
+  //       return 'rgb( 0, 0, ' + (d) + ')';
+  //     });
+  // }
 
   $('#play').click(function() {
     getData();
@@ -113,7 +133,7 @@ let frequencyData = new Uint8Array(200);
 
   $('#pause').click(function() {
       source.stop(0);
-      $("#status").text("Status: Paused");
+      $("#status").text("Status: Stopped");
   });
 
   renderChart();
