@@ -1,3 +1,5 @@
+
+
 $(document).ready( function () {
     // let audioElement = document.getElementById('audioElement');
     // audioElement.crossOrigin = "anonymous";
@@ -21,6 +23,7 @@ $(document).ready( function () {
     let audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     let analyser = audioCtx.createAnalyser();
     let source;
+    let source2;
 
 
 
@@ -33,7 +36,7 @@ function getData() {
   source = audioCtx.createBufferSource();
   let request = new XMLHttpRequest();
 
-  request.open('GET', './audio/slow.mp3', true);
+  request.open('GET', './audio/turn.mp3', true);
 
   request.responseType = 'arraybuffer';
 
@@ -62,7 +65,7 @@ function getData() {
 
 let frequencyData = new Uint8Array(200);
 
-  let svgHeight = '300';
+  let svgHeight = '1030';
   let svgWidth = '1800';
   // let barPadding = '1';
 
@@ -78,12 +81,19 @@ let frequencyData = new Uint8Array(200);
 
   let svg = createSvg('body', svgHeight, svgWidth);
 
-  // svg.selectAll('circle')
-  //    .data(frequencyData)
-  //    .enter()
-  //    .append('circle')
-  //    .attr("cx", 700)
-  //    .attr("cy", 400)
+  svg.selectAll('circle')
+     .data(frequencyData)
+     .enter()
+     .append('circle')
+     .attr("cx", 600)
+     .attr("cy", 370);
+
+   svg.selectAll('circle')
+      .data(frequencyData.slice(6, 11))
+      .enter()
+      .append('circle')
+      .attr("cx", 700)
+      .attr("cy", 400);
 
   svg.selectAll('rect')
      .data(frequencyData)
@@ -98,6 +108,7 @@ let frequencyData = new Uint8Array(200);
     requestAnimationFrame(renderChart);
 
     analyser.getByteFrequencyData(frequencyData);
+    // console.log(frequencyData);
 
     svg.selectAll('rect')
       .data(frequencyData)
@@ -110,20 +121,26 @@ let frequencyData = new Uint8Array(200);
       .attr('fill', function(d) {
         return 'rgb( 0, 0, ' + (d) + ')';
       });
-  }
 
-  //   svg.selectAll('circle')
-  //     .data(frequencyData)
-  //     .attr('y', function(d) {
-  //       return d;
-  //     })
-  //     .attr('r', function(d) {
-  //       return d;
-  //     })
-  //     .attr('fill', function(d) {
-  //       return 'rgb( 0, 0, ' + (d) + ')';
-  //     });
-  // }
+
+    svg.selectAll('circle')
+      .data(frequencyData)
+      .attr('r', function(d) {
+        return d;
+      })
+      .attr('fill', function(d) {
+        return 'rgb( 0, ' + (d) + ', ' + (d) + ')';
+      });
+
+    svg.selectAll('circle')
+      .data(frequencyData.slice(6,11))
+      .attr('r', function(d) {
+        return 1.5*d;
+      })
+      .attr('fill', function(d) {
+        return 'rgb( 0, 0, ' + (d) + ')';
+      });
+  }
 
   $('#play').click(function() {
     getData();
