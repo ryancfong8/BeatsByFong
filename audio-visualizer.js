@@ -7,26 +7,37 @@ const sounds = {
   78: './sounds/Kick-808-Thud.wav', // n
   77: './sounds/Kick-Big-Sine.wav', // m
 
-  65: './sounds/Tom-505-ASR-1.wav', // a
-  83: './sounds/Tom-505-ASR-2.wav', // s
-  68: './sounds/Tom-505-ASR-3.wav', // d
-  70: './sounds/Snare-BamVin.wav', // f
-  71: './sounds/Snare-70s-MPC-1.wav', // g
-  72: './sounds/Snare-Vinyl-01.wav', // h
-  74: './sounds/Tom-DDD-Fatx-1.wav', // j
-  75: './sounds/Tom-DDD-Fatx-2.wav', // k
-  76: './sounds/Tom-DDD-Fatx-3.wav', // l
+  65: './sounds/Tom-DMX-Fatso-1.wav', // a
+  83: './sounds/Tom-DMX-Fatso-2.wav', // s
+  68: './sounds/Tom-DMX-Fatso-3.wav', // d
+  70: './sounds/Tom-DMX-Fatso-4.wav', // f
+  71: './sounds/Tom-DMX-Fatso-5.wav', // g
+  72: './sounds/Tom-DMX-Fatso-6.wav', // h
+  74: './sounds/SnareClap-Disco.wav', // j
+  75: './sounds/Snare-70s-MPC-1.wav', // k
+  76: './sounds/Snare-Vinyl-01.wav', // l
 
   81: './sounds/Hihat-505-ASR-Open.wav', //q
-  87: './sounds/hey.wav', //w
+  87: './sounds/Snap-SP.wav', //w
   69: './sounds/Perc-Bolly-1.wav', //e
   82: './sounds/Tamb-ShortAndSolid.wav', //r
   84: './sounds/Cymbal-Boring.wav', //t
   89: './sounds/Cowbell-SP.wav', //y
-  85: './sounds/Clap_BitNighties.wav', //u
+  85: './sounds/Clap-BitNighties.wav', //u
   73: './sounds/Hihat-80sSpaceCraft-Closed.wav', //i
   79: './sounds/Ride-Real-SP-2.wav', //o
-  80: './sounds/Cabassa SP.wav', //p
+  80: './sounds/Cabassa-SP.wav', //p
+
+  49: './sounds/one.wav', //1
+  50: './sounds/two.wav',//2
+  51: './sounds/three.wav', //3
+  52: './sounds/jump.wav',//4
+  53: './sounds/yeah.wav', //5
+  54: './sounds/yeah2.wav',//6
+  55: './sounds/what.wav',//7
+  56: './sounds/okay.wav', //8
+  57: './sounds/hey.wav', //9
+  48: './sounds/go.wav' //0
 };
 
 $(document).ready( function () {
@@ -144,7 +155,14 @@ let frequencyData = new Uint8Array(200);
      .attr("cy", 370);
 
    svg.selectAll('circle')
-      .data(frequencyData.slice(6, 11))
+      .data(frequencyData.slice(6, 100))
+      .enter()
+      .append('circle')
+      .attr("cx", 700)
+      .attr("cy", 400);
+
+   svg.selectAll('circle')
+      .data(frequencyData.slice(100))
       .enter()
       .append('circle')
       .attr("cx", 700)
@@ -174,7 +192,7 @@ let frequencyData = new Uint8Array(200);
         return d;
       })
       .attr('fill', function(d) {
-        return 'rgb( 0, 0, ' + (d) + ')';
+        return 'rgb( 255,' + (d) + ', 50)';
       });
 
 
@@ -210,7 +228,7 @@ let frequencyData = new Uint8Array(200);
   };
 
   $('#play').click(function() {
-    getData1('slow');
+    getData1('turn');
     source.start(0);
       $("#status").text("Status: Playing");
   });

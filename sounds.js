@@ -23,7 +23,7 @@
 //   82: './sounds/Tamb-ShortAndSolid.wav', //r
 //   84: './sounds/Cymbal-Boring.wav', //t
 //   89: './sounds/Cowbell-SP.wav', //y
-//   85: './sounds/Clap_BitNighties.wav', //u
+//   85: './sounds/Clap-BitNighties.wav', //u
 //   73: './sounds/Hihat-80sSpaceCraft-Closed.wav', //i
 //   79: './sounds/Ride-Real-SP-2.wav', //o
 //   80: './sounds/Cabassa SP.wav', //p
