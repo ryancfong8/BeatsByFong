@@ -129,53 +129,99 @@ function getData2(sound) {
 // audioSrc.connect(analyser);
 // audioSrc.connect(audioCtx.destination);
 
-let frequencyData = new Uint8Array(200);
 
-  let svgHeight = '1030';
-  let svgWidth = '1800';
+
+  // let svgHeight = '1500';
+  // let svgWidth = '1800';
   // let barPadding = '1';
 
   // function createSvg(parent, height, width) {
   //   return d3.select(parent).append('svg').attr('height', height).attr('width', width);
   // }
 
-  function createSvg(parent, height, width) {
-    return d3.select(parent).append('svg').attr('height', height).attr('width', width);
-  }
+  // function createSvg(parent, height, width) {
+  //   return d3.select(parent).append('svg').attr('height', height).attr('width', width);
+  // }
+
+  let svg = d3.select('#svg-container')
+    .append('svg')
+    // .attr("preserveAspectRatio", "xMinYMin meet")
+    // .attr("viewBox", "0 0 600 400")
+    .attr('width', 900)
+    .attr('height', 900)
+    .classed("svg-content-responsive", true);
+
+
+  // let svg = createSvg('body', svgHeight, svgWidth);
 
 
 
-  let svg = createSvg('body', svgHeight, svgWidth);
 
-  svg.selectAll('circle')
-     .data(frequencyData)
-     .enter()
-     .append('circle')
-     .attr("cx", 600)
-     .attr("cy", 370);
+      // const theta = [0, Math.PI / 12,
+      //   Math.PI / 6,
+      //   Math.PI / 4,
+      //   Math.PI / 3,
+      //   5 * (Math.PI / 12),
+      //   Math.PI / 2,
+      //   7 * (Math.PI / 12),
+      //   2 * (Math.PI / 3),
+      //   3 * (Math.PI / 4),
+      //   5 * (Math.PI / 6),
+      //   11 * (Math.PI / 12),
+      //   Math.PI,
+      //   13 * (Math.PI / 12),
+      //   7 * (Math.PI / 6),
+      //   5 * (Math.PI / 4),
+      //   4 * (Math.PI / 3),
+      //   17 * (Math.PI / 12),
+      //   3 * (Math.PI / 2),
+      //   19 * (Math.PI / 12),
+      //   5 * (Math.PI / 3),
+      //   7 * (Math.PI / 4),
+      //   11 * (Math.PI / 6),
+      //   23 * (Math.PI / 12)];
 
-   svg.selectAll('circle')
-      .data(frequencyData.slice(6, 100))
-      .enter()
-      .append('circle')
-      .attr("cx", 700)
-      .attr("cy", 400);
+    function angles(n) {
+      let result = {};
+      for (let i = 0; i < n; i++) {
+        result[i] = ((i* 2* Math.PI) / n) + (3 * (Math.PI/2));
+      }
+      return result;
+    }
 
-   svg.selectAll('circle')
-      .data(frequencyData.slice(100))
-      .enter()
-      .append('circle')
-      .attr("cx", 700)
-      .attr("cy", 400);
+    const bars = 150;
+    let frequencyData = new Uint8Array(bars + 25);
+
+    const theta = angles(bars);
+
+    const radius = 300;
+    const barRadius = radius - 250;
+
+    let cx = 450;
+    let cy = 450;
 
   svg.selectAll('rect')
-     .data(frequencyData)
+     .data(frequencyData.slice(25))
      .enter()
      .append('rect')
      .attr('x', function (d, i) {
-        return i * (svgWidth / frequencyData.length);
+        return cx + Math.round(barRadius * (Math.cos(theta[i])));
      })
-     .attr('width', svgWidth / frequencyData.length); //- barPadding);
+     .attr('y', function (d, i) {
+        return cy + Math.round(barRadius * (Math.sin(theta[i])));
+     })
+     .attr('transform', function (d, i) {
+       return 'rotate(' + (i *(360/bars) + 180) + ',' + (cx + Math.round((barRadius) * (Math.cos(theta[i])))) + ',' + (cy + Math.round((barRadius) * (Math.sin(theta[i])))) + ')'
+      //  return 'rotate(' + (i *(360/24)) + ',' + (600 + Math.round(radius * (Math.cos(theta[i])))) + ',' + (600 + Math.round(radius * (Math.sin(theta[i])))) + ')'
+     })
+     .attr('width', Math.PI * (barRadius) * 2 / bars); //- barPadding);
+
+   svg.selectAll('circle')
+      .data(frequencyData)
+      .enter()
+      .append('circle')
+      .attr("cx", cx)
+      .attr("cy", cy);
 
   function renderChart() {
     requestAnimationFrame(renderChart);
@@ -184,12 +230,13 @@ let frequencyData = new Uint8Array(200);
     // console.log(frequencyData);
 
     svg.selectAll('rect')
-      .data(frequencyData)
-      .attr('y', function(d) {
-        return svgHeight - d;
-      })
+      .data(frequencyData.slice(25))
+      // .attr('y', function(d) {
+      //   return svgHeight - d;
+      // })
       .attr('height', function(d) {
-        return d;
+        let d1 = d - 50;
+        return d > 0 ? d + 220 : d;
       })
       .attr('fill', function(d) {
         return 'rgb( 255,' + (d) + ', 50)';
@@ -228,7 +275,7 @@ let frequencyData = new Uint8Array(200);
   };
 
   $('#play').click(function() {
-    getData1('turn');
+    getData1('smile');
     source.start(0);
       $("#status").text("Status: Playing");
   });

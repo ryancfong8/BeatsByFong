@@ -5,27 +5,35 @@
     <meta charset="utf-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Beats By Fong</title>
-
-
+    <link href="https://fonts.googleapis.com/css?family=Audiowide|Bangers|Changa+One|Coda|Fredoka+One|Luckiest+Guy|Sigmar+One|Orbitron" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="beats.css">
   </head>
   <body>
 
-    <h1>Welcome to Beats By Fong</h1>
+    <h1 class = "title">Beats By Fong</h1>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
       <!-- <audio id="audioElement" src ="./audio/audien1.mp3"></audio> -->
+      <p>Becoming a DJ was never easier. Remix Your Sounds In Real Time.</p>
+      <p>Play Some Beats! Press any letter or number key.</p>
+      <p>  Keyboard Rows (from bottom):
+        Z - M = Bass Drums
+        A - H = Toms, J - L = Snare Drums
+        Q - P = Cymbals, Auxilary Percussion
+        1 - 9, 0 = Vocal Sound Effects</p>
+
         <h2>Sound Information</h2>
         <!-- <div id="length">Duration:</div>
         <div id="source">Source:</div> -->
         <div id="status" style="color:red;">Status: Stopped</div>
         <!-- <hr> -->
-        <h2>Control Buttons</h2>
         <button id="play">Play</button>
         <button id="pause">Stop</button>
         <!-- <button id="restart">Restart</button> -->
         <!-- <hr> -->
         <!-- <h2>Playing Information</h2>
         <div id="currentTime">0</div> -->
+        <div id = "svg-container"></div>
         <script src="https://d3js.org/d3.v4.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.3/howler.core.min.js"></script>
         <script src="audio-visualizer.js"></script>
