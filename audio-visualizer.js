@@ -89,7 +89,7 @@ function getData1(sound) {
 
         source.connect(analyser);
         source.connect(audioCtx.destination);
-        source.loop = true;
+        source.loop = false;
       },
 
       function(e){ console.log("Error with decoding audio data" + e.err); });
@@ -147,8 +147,8 @@ function getData2(sound) {
     .append('svg')
     // .attr("preserveAspectRatio", "xMinYMin meet")
     // .attr("viewBox", "0 0 600 400")
-    .attr('width', 900)
-    .attr('height', 900)
+    .attr('width', 1000)
+    .attr('height', 1000)
     .classed("svg-content-responsive", true);
 
 
@@ -197,8 +197,8 @@ function getData2(sound) {
     const radius = 300;
     const barRadius = radius - 250;
 
-    let cx = 450;
-    let cy = 450;
+    let cx = 500;
+    let cy = 500;
 
   svg.selectAll('rect')
      .data(frequencyData.slice(25))
@@ -235,8 +235,8 @@ function getData2(sound) {
       //   return svgHeight - d;
       // })
       .attr('height', function(d) {
-        let d1 = d - 50;
-        return d > 0 ? d + 220 : d;
+        // let d1 = d - 50;
+        return d > 0 ? d + 130 : d;
       })
       .attr('fill', function(d) {
         return 'rgb( 255,' + (d) + ', 50)';
@@ -246,7 +246,7 @@ function getData2(sound) {
     svg.selectAll('circle')
       .data(frequencyData)
       .attr('r', function(d) {
-        return d;
+        return d * .75;
       })
       .attr('fill', function(d) {
         return 'rgb( 0, ' + (d) + ', ' + (d) + ')';
@@ -255,11 +255,13 @@ function getData2(sound) {
     svg.selectAll('circle')
       .data(frequencyData.slice(6,11))
       .attr('r', function(d) {
-        return 1.5*d;
+        return d * 1.1;
       })
       .attr('fill', function(d) {
         return 'rgb( 0, 0, ' + (d) + ')';
       });
+
+      // console.log(frequencyData);
   }
 
   document.onkeydown = function(e) {
@@ -274,14 +276,49 @@ function getData2(sound) {
     source2.start(0);
   };
 
-  $('#play').click(function() {
-    getData1('smile');
+  $('#yeah').click(function() {
+    getData1('yeah');
+    source.start(0);
+      $("#status").text("Status: Playing");
+  });
+
+  $('#audien').click(function() {
+    getData1('audien');
+    source.start(0);
+      $("#status").text("Status: Playing");
+  });
+
+  $('#turn').click(function() {
+    getData1('turn');
+    source.start(0);
+      $("#status").text("Status: Playing");
+  });
+
+  $('#levels').click(function() {
+    getData1('levels');
+    source.start(0);
+      $("#status").text("Status: Playing");
+  });
+
+  $('#inception').click(function() {
+    getData1('inception');
+    source.start(0);
+      $("#status").text("Status: Playing");
+  });
+  $('#slow').click(function() {
+    getData1('slow');
+    source.start(0);
+      $("#status").text("Status: Playing");
+  });
+  $('#against').click(function() {
+    getData1('against');
     source.start(0);
       $("#status").text("Status: Playing");
   });
 
   $('#pause').click(function() {
-      source.stop(0);
+      if (source) source.stop(0);
+      if (source2) source2.stop(0);
       $("#status").text("Status: Stopped");
   });
 
