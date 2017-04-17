@@ -261,6 +261,27 @@ function getData2(sound) {
         return 'rgb( 0, 0, ' + (d) + ')';
       });
 
+      if (source) {
+        $('#yeah').prop('disabled', true);
+        $('#audien').prop('disabled', true);
+        $('#turn').prop('disabled', true);
+        $('#levels').prop('disabled', true);
+        $('#inception').prop('disabled', true);
+        $('#slow').prop('disabled', true);
+        $('#against').prop('disabled', true);
+        $('#300').prop('disabled', true);
+      }
+      else {
+        $('#yeah').prop('disabled', false);
+        $('#audien').prop('disabled', false);
+        $('#turn').prop('disabled', false);
+        $('#levels').prop('disabled', false);
+        $('#inception').prop('disabled', false);
+        $('#slow').prop('disabled', false);
+        $('#against').prop('disabled', false);
+        $('#300').prop('disabled', false);
+      }
+
       // console.log(frequencyData);
   }
 
@@ -279,46 +300,61 @@ function getData2(sound) {
   $('#yeah').click(function() {
     getData1('yeah');
     source.start(0);
-      $("#status").text("Status: Playing");
+    $("#status").text("Status: Playing");
+
   });
 
   $('#audien').click(function() {
     getData1('audien');
     source.start(0);
       $("#status").text("Status: Playing");
+
   });
 
   $('#turn').click(function() {
     getData1('turn');
     source.start(0);
       $("#status").text("Status: Playing");
+
   });
 
   $('#levels').click(function() {
     getData1('levels');
     source.start(0);
       $("#status").text("Status: Playing");
+
   });
 
   $('#inception').click(function() {
     getData1('inception');
     source.start(0);
       $("#status").text("Status: Playing");
+
   });
   $('#slow').click(function() {
     getData1('slow');
     source.start(0);
       $("#status").text("Status: Playing");
+
   });
   $('#against').click(function() {
     getData1('against');
     source.start(0);
       $("#status").text("Status: Playing");
+
+  });
+  $('#300').click(function() {
+    getData1('300');
+    source.start(0);
+      $("#status").text("Status: Playing");
+
   });
 
-  $('#pause').click(function() {
+  $('#stop').click(function() {
       if (source) source.stop(0);
       if (source2) source2.stop(0);
+      if (source) source = null;
+      if (source2) source2 = null;
       $("#status").text("Status: Stopped");
   });
 
