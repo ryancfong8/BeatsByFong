@@ -1,10 +1,14 @@
 p, h1, h2, h3, div, button {
-  font-family: 'Audiowide', cursive;
+  /*font-family: 'Audiowide', cursive;*/
   /*font-family: 'Changa One', cursive;*/
   text-align: center;
   justify-content: center;
   align-items: center;
   color: #fff;
+}
+
+h1 {
+  font-family: 'Audiowide', cursive;
 }
 
 html {
@@ -14,13 +18,48 @@ html {
   align-items: center;
 }
 
+p, button {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+}
+
+#slogan {
+  font-size: 16px;
+}
+
+#map {
+  font-size: 16px;
+}
+
+#bass {
+  color: #0066ff;
+}
+
+#toms {
+  color: #FC3302;
+}
+
+#snares {
+  color: #37FDFC;
+}
+
+#aux {
+  color: #FFA500;
+}
+
+#vocals {
+  color: #ff0;
+}
+
 button {
   color: #000;
-  height: 60px;
+  height: 72px;
   width: 150px;
-  font-size: 12px;
+  font-size: 16px;
   background-color: #cccccc;
   margin-left: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 button:hover {
@@ -33,13 +72,20 @@ button:disabled {
 
 #stop {
   margin-bottom: 20px;
-  font-size: 16px;
+  font-size: 24px;
+  color: #ff0000;
+  font-weight: bold;
+}
+
+#stop:disabled {
+  visibility: hidden;
 }
 .buttons {
   margin-top: 10px;
   margin-bottom: 10px;
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 /*#svg-container {

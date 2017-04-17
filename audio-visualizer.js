@@ -270,6 +270,7 @@ function getData2(sound) {
         $('#slow').prop('disabled', true);
         $('#against').prop('disabled', true);
         $('#300').prop('disabled', true);
+        $('#stop').prop('disabled', false);
       }
       else {
         $('#yeah').prop('disabled', false);
@@ -280,6 +281,7 @@ function getData2(sound) {
         $('#slow').prop('disabled', false);
         $('#against').prop('disabled', false);
         $('#300').prop('disabled', false);
+        $('#stop').prop('disabled', true);
       }
 
       // console.log(frequencyData);
