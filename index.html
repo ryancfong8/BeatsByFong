@@ -10,18 +10,25 @@
   </head>
   <body>
 
-    <h1 class = "title">Beats By Fong</h1>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
       <!-- <audio id="audioElement" src ="./audio/audien1.mp3"></audio> -->
-      <p id="slogan">Becoming A DJ Was Never Easier. Drum Along To Your Favorite Song Or Remix The Beat In Real Time.</p>
-      <p id="directions">Play Some Beats! Press any letter or number key.</p>
-      <p id="map">  Keyboard Rows (from bottom):
-        <text id="bass">Z - M = Bass Drums </text>
-        <text id="toms">A - H = Toms </text>
-        <text id="snares">J - L = Snare Drums </text>
-        <text id="aux">Q - P = Cymbals, Auxilary Percussion </text>
-        <text id="vocals">1 - 9, 0 = Vocal Sound Effects</text></p>
+      <div id="i-modal" class="modal">
+        <div class="modal-content">
+          <text id="welcome">Welcome to Beats By Fong</text>
+          <text id="slogan">Becoming A DJ Was Never Easier. Drum Along To Your Favorite Song Or Add Your Own Remix In Real Time.</text>
+          <text id="directions">Play Some Beats! Press any letter or number key.</text>
+          <p id="map"> Keyboard Rows (from bottom):
+            <text id="bass">Z - M = Bass Drums </text>
+            <text id="toms">A - H = Toms </text>
+            <text id="snares">J - L = Snare Drums </text>
+            <text id="aux">Q - P = Cymbals, Auxilary Percussion </text>
+            <text id="vocals">1 - 9, 0 = Vocal Sound Effects</text></p>
+
+          <button id = "close-modal" class = "close">Got It!</button>
+        </div>
+      </div>
+
 
         <!-- <h2>Sound Information</h2> -->
         <!-- <div id="length">Duration:</div>
@@ -39,8 +46,12 @@
         <button id="against">Pop: Phil Collins - Against All Odds</button>
       </div>
       <div>
+      <button id="instructions">Instructions</button>
+    </div>
+      <div>
         <button id="stop">Stop</button>
       </div>
+      <h1 id = "title">Beats By Fong</h1>
         <!-- <button id="restart">Restart</button> -->
         <!-- <hr> -->
         <!-- <h2>Playing Information</h2>

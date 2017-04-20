@@ -1,3 +1,28 @@
+var modal = document.getElementById('i-modal');
+
+// Get the button that opens the modal
+var open = document.getElementById("instructions");
+
+// Get the <span> element that closes the modal
+var close = document.getElementById("close-modal");
+
+// When the user clicks on the button, open the modal
+open.onclick = function() {
+    modal.style.display = "block";
+};
+
+// When the user clicks on <span> (x), close the modal
+close.onclick = function() {
+    modal.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+};
+
 const sounds = {
   90: './sounds/Kick-808-Tone6-q.wav', // z
   88: './sounds/Kick-909-Tune10-i.wav', // x
@@ -62,6 +87,7 @@ $(document).ready( function () {
 
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     const analyser = audioCtx.createAnalyser();
+    const analyser2 = audioCtx.createAnalyser();
     let source;
     let source2;
 
@@ -114,6 +140,7 @@ function getData2(sound) {
         source2.buffer = buffer;
 
         source2.connect(analyser);
+        source2.connect(analyser2);
         source2.connect(audioCtx.destination);
         source2.loop = false;
       },
@@ -190,12 +217,16 @@ function getData2(sound) {
     }
 
     const bars = 150;
+    const polygons = 50;
     let frequencyData = new Uint8Array(bars + 25);
+    let frequencyData2 = new Uint8Array(polygons);
 
     const theta = angles(bars);
+    const theta2 = angles(polygons);
 
     const radius = 300;
     const barRadius = radius - 250;
+    const ellipseRadius = radius + 50;
 
     let cx = 500;
     let cy = 500;
@@ -216,17 +247,31 @@ function getData2(sound) {
      })
      .attr('width', Math.PI * (barRadius) * 2 / bars); //- barPadding);
 
-   svg.selectAll('circle')
+  svg.selectAll('circle')
       .data(frequencyData)
       .enter()
       .append('circle')
       .attr("cx", cx)
       .attr("cy", cy);
 
+  svg.selectAll('ellipse')
+    .data(frequencyData2)
+    .enter()
+    .append('ellipse')
+    .attr('x', function (d, i) {
+       return cx + Math.round(ellipseRadius * (Math.cos(theta2[i])));
+    })
+    .attr('y', function (d, i) {
+       return cy + Math.round(ellipseRadius * (Math.sin(theta2[i])));
+    })
+    .attr("rx", 0)
+    .attr("ry", 0);
+
   function renderChart() {
     requestAnimationFrame(renderChart);
 
     analyser.getByteFrequencyData(frequencyData);
+    analyser2.getByteFrequencyData(frequencyData2);
     // console.log(frequencyData);
 
     svg.selectAll('rect')
@@ -297,7 +342,13 @@ function getData2(sound) {
     }
     getData2(soundId);
     source2.start(0);
+    sound.play();
+    $('#title').toggleClass('title-animation');
   };
+
+  document.onkeyup = function(e) {
+    $('#title').toggleClass('title-animation');
+  }
 
   $('#yeah').click(function() {
     getData1('yeah');
