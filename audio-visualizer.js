@@ -175,7 +175,7 @@ function getData2(sound) {
     // .attr("preserveAspectRatio", "xMinYMin meet")
     // .attr("viewBox", "0 0 600 400")
     .attr('width', 1000)
-    .attr('height', 1000)
+    .attr('height', 750)
     .classed("svg-content-responsive", true);
 
 
@@ -229,7 +229,7 @@ function getData2(sound) {
     const ellipseRadius = radius + 50;
 
     let cx = 500;
-    let cy = 500;
+    let cy = 400;
 
   svg.selectAll('rect')
      .data(frequencyData.slice(25))
@@ -269,6 +269,11 @@ function getData2(sound) {
 
   function renderChart() {
     requestAnimationFrame(renderChart);
+
+    if (!source || !source2) {
+      frequencyData = new Uint8Array(bars + 25);
+      frequencyData2 = new Uint8Array(polygons);
+    }
 
     analyser.getByteFrequencyData(frequencyData);
     analyser2.getByteFrequencyData(frequencyData2);
@@ -348,7 +353,7 @@ function getData2(sound) {
 
   document.onkeyup = function(e) {
     $('#title').toggleClass('title-animation');
-  }
+  };
 
   $('#yeah').click(function() {
     getData1('yeah');
@@ -410,6 +415,13 @@ function getData2(sound) {
       if (source2) source2 = null;
       $("#status").text("Status: Stopped");
   });
+
+  $('.toggle').on('click', function() {
+    $('.sidebar').toggleClass("sidebar-collapsed");
+    $('.toggle').text(function(i, text){
+      return text === "Show Playlist" ? "Hide Playlist" : "Show Playlist";
+    });
+});
 
   renderChart();
 });

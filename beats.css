@@ -1,5 +1,5 @@
 html {
-  background-color: #000;
+  background: linear-gradient(#036, #000);
   display:flex;
   flex-direction: column;
   align-items: center;
@@ -45,21 +45,27 @@ button:disabled {
 }
 
 #stop {
+  position: absolute;
   margin-bottom: 20px;
   font-size: 24px;
   color: #ff0000;
   font-weight: bold;
+  right: 5px;
+  top: 100px;
+  width: 120px;
+  height: 50px;
 }
 
 #stop:disabled {
   visibility: hidden;
 }
-.buttons {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
+
+#instructions {
+  position: absolute;
+  top: 45px;
+  right: 5px;
+  width: 120px;
+  height: 30px;
 }
 
 .modal {
@@ -151,6 +157,7 @@ button:disabled {
 
 #title {
   font-size: 64px;
+  margin-bottom: 5px;
 }
 
 @keyframes stretch {
@@ -160,4 +167,46 @@ button:disabled {
   50% {
     transform: scale(1.1);
   }
+}
+
+.sidebar, .toggle {
+    transition:all .5s ease-in-out;
+    -webkit-transition:all .5s ease-in-out;
+}
+
+.sidebar {
+    width:200px;
+    height:800px;
+    position:absolute;
+    top:0;
+    left:0;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: scroll;
+    background-color: transparent;
+    opacity: .7;
+    border-right: 1px solid #cccccc;
+    box-sizing: border-box;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.toggle {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width:120px;
+    height:30px;
+}
+
+.sidebar-collapsed {
+     transform:translateX(-100%);
+    -webkit-transform:translateX(-100%);
+}
+
+.sidebar-collapsed .toggle {
+   background-color: #fff;
+   right: -5px;
+   transform:translateX(100%);
+  -webkit-transform:translateX(100%);
 }
