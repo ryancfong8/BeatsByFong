@@ -45,27 +45,34 @@ button:disabled {
 }
 
 #stop {
-  position: absolute;
-  margin-bottom: 20px;
   font-size: 24px;
   color: #ff0000;
   font-weight: bold;
-  right: 5px;
-  top: 100px;
   width: 120px;
   height: 50px;
 }
 
 #stop:disabled {
-  visibility: hidden;
+  /*visibility: hidden;*/
+  color: #ffffff;
 }
 
 #instructions {
   position: absolute;
-  top: 45px;
-  right: 5px;
+  top: 5px;
+  right: 10px;
   width: 120px;
   height: 30px;
+  font-weight: bold;
+  color: #cccccc;
+  opacity: .8
+}
+
+#instructions:hover {
+  text-decoration: underline;
+  color: #ffffff;
+  opacity: 1;
+  cursor: pointer;
 }
 
 .modal {
@@ -77,26 +84,30 @@ button:disabled {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.3);
 }
 
 .modal-content {
     background-color: #000;
     opacity: .8;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 10% auto;
     padding: 20px;
     border: 1px solid #888;
     border-radius: 10px;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
+#pic {
+  width:700px;
+  height: 250px;
+}
+
 .close {
-    color: #aaa;
     float: right;
     font-size: 16px;
     font-weight: bold;
@@ -169,7 +180,7 @@ button:disabled {
   }
 }
 
-.sidebar, .toggle {
+.sidebar {
     transition:all .5s ease-in-out;
     -webkit-transition:all .5s ease-in-out;
 }
@@ -178,13 +189,12 @@ button:disabled {
     width:200px;
     height:800px;
     position:absolute;
-    top:0;
+    top:40px;
     left:0;
     display: flex;
     flex-wrap: wrap;
     overflow: scroll;
     background-color: transparent;
-    opacity: .7;
     border-right: 1px solid #cccccc;
     box-sizing: border-box;
     padding-right: 20px;
@@ -193,10 +203,21 @@ button:disabled {
 
 .toggle {
     position: absolute;
-    right: 5px;
+    left: 35px;
     top: 5px;
     width:120px;
     height:30px;
+    color: #fefefe;
+    opacity: .7;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.toggle:hover {
+  text-decoration: underline;
+  color: #ffffff;
+  opacity: 1;
+  cursor: pointer;
 }
 
 .sidebar-collapsed {

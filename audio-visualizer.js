@@ -419,7 +419,7 @@ function getData2(sound) {
   $('.toggle').on('click', function() {
     $('.sidebar').toggleClass("sidebar-collapsed");
     $('.toggle').text(function(i, text){
-      return text === "Show Playlist" ? "Hide Playlist" : "Show Playlist";
+      return text === "Playlist" ? "Hide Playlist" : "Playlist";
     });
 });
 
