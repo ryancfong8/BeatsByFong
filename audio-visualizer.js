@@ -272,11 +272,10 @@ function getData2(sound) {
 
     if (!source || !source2) {
       frequencyData = new Uint8Array(bars + 25);
-      frequencyData2 = new Uint8Array(polygons);
     }
 
     analyser.getByteFrequencyData(frequencyData);
-    analyser2.getByteFrequencyData(frequencyData2);
+
     // console.log(frequencyData);
 
     svg.selectAll('rect')
