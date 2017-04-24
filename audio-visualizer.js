@@ -217,16 +217,16 @@ function getData2(sound) {
     }
 
     const bars = 150;
-    const polygons = 50;
+    // const polygons = 50;
     let frequencyData = new Uint8Array(bars + 25);
-    let frequencyData2 = new Uint8Array(polygons);
+    // let frequencyData2 = new Uint8Array(polygons);
 
     const theta = angles(bars);
-    const theta2 = angles(polygons);
+    // const theta2 = angles(polygons);
 
     const radius = 300;
     const barRadius = radius - 250;
-    const ellipseRadius = radius + 50;
+    // const ellipseRadius = radius + 50;
 
     let cx = 500;
     let cy = 400;
@@ -254,18 +254,18 @@ function getData2(sound) {
       .attr("cx", cx)
       .attr("cy", cy);
 
-  svg.selectAll('ellipse')
-    .data(frequencyData2)
-    .enter()
-    .append('ellipse')
-    .attr('x', function (d, i) {
-       return cx + Math.round(ellipseRadius * (Math.cos(theta2[i])));
-    })
-    .attr('y', function (d, i) {
-       return cy + Math.round(ellipseRadius * (Math.sin(theta2[i])));
-    })
-    .attr("rx", 0)
-    .attr("ry", 0);
+  // svg.selectAll('ellipse')
+  //   .data(frequencyData2)
+  //   .enter()
+  //   .append('ellipse')
+  //   .attr('x', function (d, i) {
+  //      return cx + Math.round(ellipseRadius * (Math.cos(theta2[i])));
+  //   })
+  //   .attr('y', function (d, i) {
+  //      return cy + Math.round(ellipseRadius * (Math.sin(theta2[i])));
+  //   })
+  //   .attr("rx", 0)
+  //   .attr("ry", 0);
 
   function renderChart() {
     requestAnimationFrame(renderChart);
@@ -419,7 +419,7 @@ function getData2(sound) {
   $('.toggle').on('click', function() {
     $('.sidebar').toggleClass("sidebar-collapsed");
     $('.toggle').text(function(i, text){
-      return text === "Playlist" ? "Hide Playlist" : "Playlist";
+      return text === "Hide Playlist" ? "Playlist" : "Hide Playlist";
     });
 });
 

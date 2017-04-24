@@ -65,7 +65,7 @@ button:disabled {
   height: 30px;
   font-weight: bold;
   color: #cccccc;
-  opacity: .8
+  opacity: .4;
 }
 
 #instructions:hover {
@@ -194,7 +194,7 @@ button:disabled {
     display: flex;
     flex-wrap: wrap;
     overflow: scroll;
-    background-color: transparent;
+    background-color: #transparent;
     border-right: 1px solid #cccccc;
     box-sizing: border-box;
     padding-right: 20px;
@@ -208,9 +208,10 @@ button:disabled {
     width:120px;
     height:30px;
     color: #fefefe;
-    opacity: .7;
+    opacity: .4;
     font-size: 20px;
     font-weight: bold;
+    margin-bottom: 16px;
 }
 
 .toggle:hover {
