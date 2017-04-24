@@ -67,7 +67,7 @@ svg.selectAll('circle')
 
 ```
 
-The rectangular bars were placed in a circular pattern also concentric to those circles and transformed to expand outwards from the circle. For these bars to be in the correct place. The calculation from cartesian to polar coordinates need to be done.
+The rectangular bars were placed in a circular pattern also concentric to those circles and transformed to expand outwards from the circle. The calculation from cartesian to polar coordinates need to be done in order for these bars to be in the correct place.
 
 ```javascript
 
@@ -90,7 +90,7 @@ svg.selectAll('rect')
 
 ### Sounds
 
-All sounds are stored locally in mp3 files.  Each time a key is pressed, `Howler.js` will make a new sound object, to be passed through the analyser and through the speakers.  This is preferred over playing an audio element because the same sound can be played over and over without having to wait for that same audio element to finish playing.
+All sounds are stored locally in mp3 files.  Each time a key is pressed, `Howler.js` will make a new sound object; to be passed through the analyser and to the speakers.  This is preferred over playing an audio element because the same sound can be played over and over without having to wait for that same audio element to finish playing.
 
 ```javascript
   document.onkeydown = function(e) {
