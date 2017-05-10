@@ -2,7 +2,7 @@
 
 [Beats By Fong Live][github]
 
-[github]: https://ryancfong8.github.io/javascript-project/
+[github]: https://ryancfong8.github.io/BeatsByFong/
 ### Background
 
 Beats By Fong is an interactive dynamic musical web app that creates a visualization of the audio that the user generates.  Users can play different percussion instruments by pressing any letter key. Users can also add popular vocal interjections to their songs by pressing the number keys above the letter keys. Users can select a song from the playlist to drum along to, or add their own beat.
