@@ -337,6 +337,7 @@ function getData2(sound) {
   }
 
   document.onkeydown = function(e) {
+    modal.style.display = "none";
     let soundId = sounds[e.keyCode];
     let sound;
     if (soundId) {
