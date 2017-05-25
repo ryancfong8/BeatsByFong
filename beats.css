@@ -109,7 +109,8 @@ button:disabled {
 }
 
 #pic {
-  width:700px;
+  object-fit: cover;
+  width: 700px;
   height: 250px;
 }
 
