@@ -211,6 +211,7 @@ button:disabled {
     box-sizing: border-box;
     padding-right: 20px;
     padding-left: 20px;
+    margin-top: 16px;
 }
 
 .toggle {
@@ -223,7 +224,6 @@ button:disabled {
     opacity: .6;
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 16px;
 }
 
 .toggle:hover {
