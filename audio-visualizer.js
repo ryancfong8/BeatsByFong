@@ -93,6 +93,7 @@ $(document).ready( function () {
 
 
 
+
     // $('#restart').click(function() {
     //     audioElement.currentTime = 0;
     // });
@@ -122,6 +123,10 @@ function getData1(sound) {
 
   };
 
+  let gainNode = audioCtx.createGain();
+  source.connect(gainNode);
+  gainNode.connect(audioCtx.destination);
+
   request.send();
 }
 function getData2(sound) {
@@ -143,6 +148,7 @@ function getData2(sound) {
         source2.connect(analyser2);
         source2.connect(audioCtx.destination);
         source2.loop = false;
+
       },
 
       function(e){ console.log("Error with decoding audio data" + e.err); });
@@ -285,7 +291,7 @@ function getData2(sound) {
       // })
       .attr('height', function(d) {
         // let d1 = d - 50;
-        return d > 0 ? d + 130 : d;
+        return d > 0 ? d + 100 : d;
       })
       .attr('fill', function(d) {
         return 'rgb( 255,' + (d) + ', 50)';
@@ -342,7 +348,8 @@ function getData2(sound) {
     let sound;
     if (soundId) {
       sound = new Howl({
-        src: [soundId]
+        src: [soundId],
+        volume: .1
       });
     }
     getData2(soundId);
